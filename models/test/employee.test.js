@@ -13,9 +13,6 @@ describe('Employee', () => {
     });
   });
 
-  after(() => {
-    mongoose.models = {};
-  });
 
   it('should throw an error when at leat one arg is missing', () => {
     const employee = new Employee({ firstName: 'ana', lastName: 'doe' });
@@ -25,9 +22,6 @@ describe('Employee', () => {
     });
   });
 
-  after(() => {
-    mongoose.models = {};
-  });
 
   it('should throw an error if args are not strings', () => {
     const cases = [{}, []];
@@ -41,10 +35,6 @@ describe('Employee', () => {
         expect(err.errors.department).to.exist;
       });
     }
-  });
-
-  after(() => {
-    mongoose.models = {};
   });
 
   it('should return proper employee when args are correct', () => {

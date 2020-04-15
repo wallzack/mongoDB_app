@@ -11,10 +11,6 @@ describe('Department', () => {
     });
   });
 
-  after(() => {
-    mongoose.models = {};
-  });
-
   it('should throw an error if "name" is not a string', () => {
     const cases = [{}, []];
 
@@ -27,10 +23,6 @@ describe('Department', () => {
     }
   });
 
-  after(() => {
-    mongoose.models = {};
-  });
-
   it('should throw an error if "name" is shorter that 5letters and longer than 20letters', () => {
     const cases = ['abs', 'abcd', 'abcd efgh ijkl mnop rstu'];
 
@@ -41,10 +33,6 @@ describe('Department', () => {
         expect(err.errors.name).to.exist;
       });
     }
-  });
-
-  after(() => {
-    mongoose.models = {};
   });
 
   it('should return proper department if "name" is correct', () => {
