@@ -21,7 +21,7 @@ describe('Employee', () => {
 
   describe('Reading data', () => {
 
-    before(async () => {
+    beforeEach(async () => {
       const test1 = new Employee({ firstName: 'Johnny', lastName: 'Doe', department: 'Management' });
       await test1.save();
 
