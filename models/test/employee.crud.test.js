@@ -22,32 +22,40 @@ describe('Employee', () => {
   describe('Reading data', () => {
 
     before(async () => {
-      const testOne = new Employee({ firstName: 'Johnny', lastName: 'Doe', department: 'Management' });
-      await testOne.save();
+      const test1 = new Employee({ firstName: 'Johnny', lastName: 'Doe', department: 'Management' });
+      await test1.save();
 
-      const testTwo = new Employee({ firstName: 'Amelie', lastName: 'Spring', department: 'Resources' });
-      await testTwo.save();
+      const test2 = new Employee({ firstName: 'Amelie', lastName: 'Spring', department: 'Resources' });
+      await test2.save();
     });
 
     it('should return all the data with "find" method', async () => {
-      const employees = await Employee.find();
-      const expectedLength = 2;
+      try {
+        const employees = await Employee.find();
+        const expectedLength = 2;
 
-      expect(employees.length).to.be.equal(expectedLength);
+        expect(employees.length).to.be.equal(expectedLength);
+      } catch (err) {
+        console.log(err);
+      }
     });
 
     it('should return proper doc by various params with "findOne" method', async () => {
-      const testOne = await Employee.findOne({ firstName: 'Johnny' });
-      const testTwo = await Employee.findOne({ lastName: 'Spring' });
-      const testThree = await Employee.findOne({ department: 'Resources' });
+      try {
+        const test1 = await Employee.findOne({ firstName: 'Johnny' });
+        const test2 = await Employee.findOne({ lastName: 'Spring' });
+        const test3 = await Employee.findOne({ department: 'Resources' });
 
-      const expectedName = 'Johnny';
-      const expectedSurname = 'Spring';
-      const expectedDep = 'Resources';
+        const expectedName = 'Johnny';
+        const expectedSurname = 'Spring';
+        const expectedDep = 'Resources';
 
-      expect(testOne.firstName).to.be.equal(expectedName);
-      expect(testTwo.lastName).to.be.equal(expectedSurname);
-      expect(testThree.department).to.be.equal(expectedDep);
+        expect(test1.firstName).to.be.equal(expectedName);
+        expect(test2.lastName).to.be.equal(expectedSurname);
+        expect(test3.department).to.be.equal(expectedDep);
+      } catch (err) {
+        console.log(err);
+      }
     });
 
 
