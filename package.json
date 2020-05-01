@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "mocha \"./{,!(node_modules)/**/}*.test.js\"",
-    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
+    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "chai": "4.2.0",
@@ -18,6 +20,8 @@
     "mongodb-memory-server": "^6.5.2",
     "mongoose": "5.7.5",
     "nodemon": "^2.0.3",
-    "onchange": "6.1.0"
-  }
+    "onchange": "6.1.0",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
